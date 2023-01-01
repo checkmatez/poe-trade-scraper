@@ -4,7 +4,7 @@
 
 Make sure you have Node.js installed - https://nodejs.org/en/download/
 
-Download repository -
+Download repository - https://github.com/checkmatez/poe-trade-scraper
 
 ## How to use
 
@@ -20,6 +20,7 @@ MAKE SURE YOUR POESESSID IS NOT LEAVING YOUR COMPUTER, DON'T LEAK IT BY ACCIDENT
 
 ## TODO
 
-Implement scrolling to get more items. Currently it works only with first page of results.
+- Implement scrolling to get more items. Currently it works only with first page of results.
+- Make it more user-friendly, publish package to npm.
 
 ## This product isn't affiliated with or endorsed by Grinding Gear Games in any way.
