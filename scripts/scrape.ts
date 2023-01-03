@@ -1,4 +1,5 @@
-import { puppeteer } from "../deps.ts";
+import { path, puppeteer } from "../deps.ts";
+import { downloadChromium } from "./download_chromium.ts";
 
 const URL = Deno.args[1] ??
   `https://www.pathofexile.com/trade/search/Hardcore%20Sanctum/r80dVGCQ`;
@@ -15,6 +16,7 @@ const scrape = async () => {
     );
     return;
   }
+  await downloadChromium();
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
@@ -45,10 +47,16 @@ const scrape = async () => {
     console.log("Extracted the following numbers from explicit mods section:");
     console.log(values.join("\n"));
 
-    await Deno.writeTextFile("./data.txt", values.join("\n"));
+    await Deno.writeTextFile("./poe-scrape-data.txt", values.join("\n"));
+    console.log(`Wrote data to: ${path.resolve("./poe-scrape-data.txt")}`);
   } catch (error) {
     await page.screenshot({ path: "./debug_screenshot.png" });
     console.error(error);
+    console.error(
+      `Error while scraping, check out logs above and screenshot from the Chromium at: ${
+        path.resolve("./debug_screenshot.png")
+      }`,
+    );
   }
 
   await browser.close();

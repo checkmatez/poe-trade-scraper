@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "scrape": "deno --unstable run --allow-env --allow-write=./data.txt scripts/scrape.ts",
+    "scrape": "deno run -A scripts/scrape.ts",
     "compile_win": "deno compile --allow-env --allow-read --allow-write --allow-run --allow-net --output=./dist/ --target=x86_64-pc-windows-msvc scripts/scrape.ts",
     "compile_mac": "deno compile --allow-env --allow-read --allow-write --allow-run --allow-net --output=./dist/ --target=x86_64-apple-darwin scripts/scrape.ts"
   }
